@@ -1,0 +1,103 @@
+$date
+	Thu Apr 16 22:13:43 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module forward_unit_tb $end
+$var wire 2 ! ForwardBE [1:0] $end
+$var wire 2 " ForwardAE [1:0] $end
+$var reg 5 # RD_M [4:0] $end
+$var reg 5 $ RD_W [4:0] $end
+$var reg 1 % RegWriteM $end
+$var reg 1 & RegWriteW $end
+$var reg 5 ' Rs1_E [4:0] $end
+$var reg 5 ( Rs2_E [4:0] $end
+$var reg 1 ) rst $end
+$scope module uut $end
+$var wire 5 * RD_M [4:0] $end
+$var wire 5 + RD_W [4:0] $end
+$var wire 1 % RegWriteM $end
+$var wire 1 & RegWriteW $end
+$var wire 5 , Rs1_E [4:0] $end
+$var wire 5 - Rs2_E [4:0] $end
+$var wire 1 ) rst $end
+$var wire 2 . ForwardBE [1:0] $end
+$var wire 2 / ForwardAE [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 /
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 *
+0)
+b0 (
+b0 '
+0&
+0%
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#10000
+b10 "
+b10 /
+b101 (
+b101 -
+b11 '
+b11 ,
+b11 #
+b11 *
+1%
+1)
+#20000
+b1 !
+b1 .
+b0 "
+b0 /
+b110 (
+b110 -
+b1000 '
+b1000 ,
+b110 $
+b110 +
+1&
+b0 #
+b0 *
+0%
+#30000
+b0 !
+b0 .
+b10 "
+b10 /
+b111 (
+b111 -
+b1001 '
+b1001 ,
+b1001 $
+b1001 +
+b1001 #
+b1001 *
+1%
+#40000
+b10 !
+b10 .
+b1010 (
+b1010 -
+b1010 '
+b1010 ,
+b0 $
+b0 +
+0&
+b1010 #
+b1010 *
+#50000

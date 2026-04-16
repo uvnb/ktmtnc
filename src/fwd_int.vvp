@@ -1,0 +1,212 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x6350b9b48060 .scope module, "interactive_forward_unit_tb" "interactive_forward_unit_tb" 2 3;
+ .timescale -9 -12;
+v0x6350b9b74980_0 .net "ForwardAE", 1 0, L_0x6350b9b765d0;  1 drivers
+v0x6350b9b74a60_0 .net "ForwardBE", 1 0, L_0x6350b9b776d0;  1 drivers
+v0x6350b9b74b00_0 .var "RD_M", 4 0;
+v0x6350b9b74c00_0 .var "RD_W", 4 0;
+v0x6350b9b74cd0_0 .var "RegWriteM", 0 0;
+v0x6350b9b74d70_0 .var "RegWriteW", 0 0;
+v0x6350b9b74e40_0 .var "Rs1_E", 4 0;
+v0x6350b9b74f10_0 .var "Rs2_E", 4 0;
+v0x6350b9b74fe0_0 .var/i "fd", 31 0;
+v0x6350b9b75080_0 .var/i "r", 31 0;
+v0x6350b9b75120_0 .var/i "rd_m_val", 31 0;
+v0x6350b9b75200_0 .var/i "rd_w_val", 31 0;
+v0x6350b9b752e0_0 .var/i "rs1", 31 0;
+v0x6350b9b753c0_0 .var/i "rs2", 31 0;
+v0x6350b9b754a0_0 .var "rst", 0 0;
+v0x6350b9b75570_0 .var/i "rw_m", 31 0;
+v0x6350b9b75630_0 .var/i "rw_w", 31 0;
+S_0x6350b9b481f0 .scope module, "uut" "hazard_unit" 2 9, 3 15 0, S_0x6350b9b48060;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "rst";
+    .port_info 1 /INPUT 1 "RegWriteM";
+    .port_info 2 /INPUT 1 "RegWriteW";
+    .port_info 3 /INPUT 5 "RD_M";
+    .port_info 4 /INPUT 5 "RD_W";
+    .port_info 5 /INPUT 5 "Rs1_E";
+    .port_info 6 /INPUT 5 "Rs2_E";
+    .port_info 7 /OUTPUT 2 "ForwardAE";
+    .port_info 8 /OUTPUT 2 "ForwardBE";
+L_0x7ef0c4663018 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x6350b9b4d680 .functor XNOR 1, v0x6350b9b754a0_0, L_0x7ef0c4663018, C4<0>, C4<0>;
+L_0x7ef0c46630a8 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+L_0x6350b9b4e340 .functor XNOR 1, v0x6350b9b74cd0_0, L_0x7ef0c46630a8, C4<0>, C4<0>;
+L_0x6350b9b50800 .functor AND 1, L_0x6350b9b4e340, L_0x6350b9b758e0, C4<1>, C4<1>;
+L_0x6350b9b75bb0 .functor AND 1, L_0x6350b9b50800, L_0x6350b9b75ac0, C4<1>, C4<1>;
+L_0x7ef0c4663180 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+L_0x6350b9b75d40 .functor XNOR 1, v0x6350b9b74d70_0, L_0x7ef0c4663180, C4<0>, C4<0>;
+L_0x6350b9b75f90 .functor AND 1, L_0x6350b9b75d40, L_0x6350b9b75e50, C4<1>, C4<1>;
+L_0x6350b9b761b0 .functor AND 1, L_0x6350b9b75f90, L_0x6350b9b760e0, C4<1>, C4<1>;
+L_0x7ef0c46632a0 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0x6350b9b767b0 .functor XNOR 1, v0x6350b9b754a0_0, L_0x7ef0c46632a0, C4<0>, C4<0>;
+L_0x7ef0c4663330 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+L_0x6350b9b768c0 .functor XNOR 1, v0x6350b9b74cd0_0, L_0x7ef0c4663330, C4<0>, C4<0>;
+L_0x6350b9b76a70 .functor AND 1, L_0x6350b9b768c0, L_0x6350b9b76980, C4<1>, C4<1>;
+L_0x6350b9b76c80 .functor AND 1, L_0x6350b9b76a70, L_0x6350b9b76be0, C4<1>, C4<1>;
+L_0x7ef0c4663408 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+L_0x6350b9b76d90 .functor XNOR 1, v0x6350b9b74d70_0, L_0x7ef0c4663408, C4<0>, C4<0>;
+L_0x6350b9b77050 .functor AND 1, L_0x6350b9b76d90, L_0x6350b9b76ec0, C4<1>, C4<1>;
+L_0x6350b9b771b0 .functor AND 1, L_0x6350b9b77050, L_0x6350b9b77110, C4<1>, C4<1>;
+v0x6350b9b3f680_0 .net "ForwardAE", 1 0, L_0x6350b9b765d0;  alias, 1 drivers
+v0x6350b9b3f720_0 .net "ForwardBE", 1 0, L_0x6350b9b776d0;  alias, 1 drivers
+v0x6350b9b71ba0_0 .net "RD_M", 4 0, v0x6350b9b74b00_0;  1 drivers
+v0x6350b9b71c60_0 .net "RD_W", 4 0, v0x6350b9b74c00_0;  1 drivers
+v0x6350b9b71d40_0 .net "RegWriteM", 0 0, v0x6350b9b74cd0_0;  1 drivers
+v0x6350b9b71e50_0 .net "RegWriteW", 0 0, v0x6350b9b74d70_0;  1 drivers
+v0x6350b9b71f10_0 .net "Rs1_E", 4 0, v0x6350b9b74e40_0;  1 drivers
+v0x6350b9b71ff0_0 .net "Rs2_E", 4 0, v0x6350b9b74f10_0;  1 drivers
+v0x6350b9b720d0_0 .net/2u *"_ivl_0", 0 0, L_0x7ef0c4663018;  1 drivers
+L_0x7ef0c46630f0 .functor BUFT 1, C4<00000>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b721b0_0 .net/2u *"_ivl_10", 4 0, L_0x7ef0c46630f0;  1 drivers
+v0x6350b9b72290_0 .net *"_ivl_12", 0 0, L_0x6350b9b758e0;  1 drivers
+v0x6350b9b72350_0 .net *"_ivl_14", 0 0, L_0x6350b9b50800;  1 drivers
+v0x6350b9b72430_0 .net *"_ivl_16", 0 0, L_0x6350b9b75ac0;  1 drivers
+v0x6350b9b724f0_0 .net *"_ivl_18", 0 0, L_0x6350b9b75bb0;  1 drivers
+v0x6350b9b725d0_0 .net *"_ivl_2", 0 0, L_0x6350b9b4d680;  1 drivers
+L_0x7ef0c4663138 .functor BUFT 1, C4<10>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b72690_0 .net/2u *"_ivl_20", 1 0, L_0x7ef0c4663138;  1 drivers
+v0x6350b9b72770_0 .net/2u *"_ivl_22", 0 0, L_0x7ef0c4663180;  1 drivers
+v0x6350b9b72850_0 .net *"_ivl_24", 0 0, L_0x6350b9b75d40;  1 drivers
+L_0x7ef0c46631c8 .functor BUFT 1, C4<00000>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b72910_0 .net/2u *"_ivl_26", 4 0, L_0x7ef0c46631c8;  1 drivers
+v0x6350b9b729f0_0 .net *"_ivl_28", 0 0, L_0x6350b9b75e50;  1 drivers
+v0x6350b9b72ab0_0 .net *"_ivl_30", 0 0, L_0x6350b9b75f90;  1 drivers
+v0x6350b9b72b90_0 .net *"_ivl_32", 0 0, L_0x6350b9b760e0;  1 drivers
+v0x6350b9b72c50_0 .net *"_ivl_34", 0 0, L_0x6350b9b761b0;  1 drivers
+L_0x7ef0c4663210 .functor BUFT 1, C4<01>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b72d30_0 .net/2u *"_ivl_36", 1 0, L_0x7ef0c4663210;  1 drivers
+L_0x7ef0c4663258 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b72e10_0 .net/2u *"_ivl_38", 1 0, L_0x7ef0c4663258;  1 drivers
+L_0x7ef0c4663060 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b72ef0_0 .net/2u *"_ivl_4", 1 0, L_0x7ef0c4663060;  1 drivers
+v0x6350b9b72fd0_0 .net *"_ivl_40", 1 0, L_0x6350b9b762c0;  1 drivers
+v0x6350b9b730b0_0 .net *"_ivl_42", 1 0, L_0x6350b9b76400;  1 drivers
+v0x6350b9b73190_0 .net/2u *"_ivl_46", 0 0, L_0x7ef0c46632a0;  1 drivers
+v0x6350b9b73270_0 .net *"_ivl_48", 0 0, L_0x6350b9b767b0;  1 drivers
+L_0x7ef0c46632e8 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b73330_0 .net/2u *"_ivl_50", 1 0, L_0x7ef0c46632e8;  1 drivers
+v0x6350b9b73410_0 .net/2u *"_ivl_52", 0 0, L_0x7ef0c4663330;  1 drivers
+v0x6350b9b734f0_0 .net *"_ivl_54", 0 0, L_0x6350b9b768c0;  1 drivers
+L_0x7ef0c4663378 .functor BUFT 1, C4<00000>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b737c0_0 .net/2u *"_ivl_56", 4 0, L_0x7ef0c4663378;  1 drivers
+v0x6350b9b738a0_0 .net *"_ivl_58", 0 0, L_0x6350b9b76980;  1 drivers
+v0x6350b9b73960_0 .net/2u *"_ivl_6", 0 0, L_0x7ef0c46630a8;  1 drivers
+v0x6350b9b73a40_0 .net *"_ivl_60", 0 0, L_0x6350b9b76a70;  1 drivers
+v0x6350b9b73b20_0 .net *"_ivl_62", 0 0, L_0x6350b9b76be0;  1 drivers
+v0x6350b9b73be0_0 .net *"_ivl_64", 0 0, L_0x6350b9b76c80;  1 drivers
+L_0x7ef0c46633c0 .functor BUFT 1, C4<10>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b73cc0_0 .net/2u *"_ivl_66", 1 0, L_0x7ef0c46633c0;  1 drivers
+v0x6350b9b73da0_0 .net/2u *"_ivl_68", 0 0, L_0x7ef0c4663408;  1 drivers
+v0x6350b9b73e80_0 .net *"_ivl_70", 0 0, L_0x6350b9b76d90;  1 drivers
+L_0x7ef0c4663450 .functor BUFT 1, C4<00000>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b73f40_0 .net/2u *"_ivl_72", 4 0, L_0x7ef0c4663450;  1 drivers
+v0x6350b9b74020_0 .net *"_ivl_74", 0 0, L_0x6350b9b76ec0;  1 drivers
+v0x6350b9b740e0_0 .net *"_ivl_76", 0 0, L_0x6350b9b77050;  1 drivers
+v0x6350b9b741c0_0 .net *"_ivl_78", 0 0, L_0x6350b9b77110;  1 drivers
+v0x6350b9b74280_0 .net *"_ivl_8", 0 0, L_0x6350b9b4e340;  1 drivers
+v0x6350b9b74340_0 .net *"_ivl_80", 0 0, L_0x6350b9b771b0;  1 drivers
+L_0x7ef0c4663498 .functor BUFT 1, C4<01>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b74420_0 .net/2u *"_ivl_82", 1 0, L_0x7ef0c4663498;  1 drivers
+L_0x7ef0c46634e0 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v0x6350b9b74500_0 .net/2u *"_ivl_84", 1 0, L_0x7ef0c46634e0;  1 drivers
+v0x6350b9b745e0_0 .net *"_ivl_86", 1 0, L_0x6350b9b77340;  1 drivers
+v0x6350b9b746c0_0 .net *"_ivl_88", 1 0, L_0x6350b9b77540;  1 drivers
+v0x6350b9b747a0_0 .net "rst", 0 0, v0x6350b9b754a0_0;  1 drivers
+L_0x6350b9b758e0 .cmp/ne 5, v0x6350b9b74b00_0, L_0x7ef0c46630f0;
+L_0x6350b9b75ac0 .cmp/eq 5, v0x6350b9b74b00_0, v0x6350b9b74e40_0;
+L_0x6350b9b75e50 .cmp/ne 5, v0x6350b9b74c00_0, L_0x7ef0c46631c8;
+L_0x6350b9b760e0 .cmp/eq 5, v0x6350b9b74c00_0, v0x6350b9b74e40_0;
+L_0x6350b9b762c0 .functor MUXZ 2, L_0x7ef0c4663258, L_0x7ef0c4663210, L_0x6350b9b761b0, C4<>;
+L_0x6350b9b76400 .functor MUXZ 2, L_0x6350b9b762c0, L_0x7ef0c4663138, L_0x6350b9b75bb0, C4<>;
+L_0x6350b9b765d0 .functor MUXZ 2, L_0x6350b9b76400, L_0x7ef0c4663060, L_0x6350b9b4d680, C4<>;
+L_0x6350b9b76980 .cmp/ne 5, v0x6350b9b74b00_0, L_0x7ef0c4663378;
+L_0x6350b9b76be0 .cmp/eq 5, v0x6350b9b74b00_0, v0x6350b9b74f10_0;
+L_0x6350b9b76ec0 .cmp/ne 5, v0x6350b9b74c00_0, L_0x7ef0c4663450;
+L_0x6350b9b77110 .cmp/eq 5, v0x6350b9b74c00_0, v0x6350b9b74f10_0;
+L_0x6350b9b77340 .functor MUXZ 2, L_0x7ef0c46634e0, L_0x7ef0c4663498, L_0x6350b9b771b0, C4<>;
+L_0x6350b9b77540 .functor MUXZ 2, L_0x6350b9b77340, L_0x7ef0c46633c0, L_0x6350b9b76c80, C4<>;
+L_0x6350b9b776d0 .functor MUXZ 2, L_0x6350b9b77540, L_0x7ef0c46632e8, L_0x6350b9b767b0, C4<>;
+    .scope S_0x6350b9b48060;
+T_0 ;
+    %vpi_func 2 22 "$fopen" 32, "/dev/tty", "r" {0 0 0};
+    %store/vec4 v0x6350b9b74fe0_0, 0, 32;
+    %load/vec4 v0x6350b9b74fe0_0;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.0, 4;
+    %vpi_call 2 25 "$display", "Loi: Khong the ket noi voi ban phim Terminal!" {0 0 0};
+    %vpi_call 2 26 "$finish" {0 0 0};
+T_0.0 ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x6350b9b754a0_0, 0, 1;
+    %vpi_call 2 32 "$display", "==================================================" {0 0 0};
+    %vpi_call 2 33 "$display", "     TEST TUONG TAC THUC: FORWARDING UNIT         " {0 0 0};
+    %vpi_call 2 34 "$display", "     (Bam Ctrl + C de thoat bat cu luc nao)       " {0 0 0};
+    %vpi_call 2 35 "$display", "==================================================" {0 0 0};
+T_0.2 ;
+    %pushi/vec4 1, 0, 32;
+    %or/r;
+    %flag_set/vec4 8;
+    %jmp/0xz T_0.3, 8;
+    %vpi_call 2 39 "$display", "\012[M\303\224 PH\341\273\216NG HI\341\273\206N TR\341\272\240NG T\341\272\240I C\303\201C T\341\272\246NG PIPELINE]" {0 0 0};
+    %vpi_call 2 40 "$display", "[1] Tang Memory co dang lenh Ghi (RegWriteM)? [Cho 1 hoac 0]: " {0 0 0};
+    %vpi_func 2 41 "$fscanf" 32, v0x6350b9b74fe0_0, "%d", v0x6350b9b75570_0 {0 0 0};
+    %store/vec4 v0x6350b9b75080_0, 0, 32;
+    %load/vec4 v0x6350b9b75570_0;
+    %pad/s 1;
+    %store/vec4 v0x6350b9b74cd0_0, 0, 1;
+    %vpi_call 2 43 "$display", "[2] Tang Memory nham vao thanh ghi nao (RD_M)? [Cho 0-31]: " {0 0 0};
+    %vpi_func 2 44 "$fscanf" 32, v0x6350b9b74fe0_0, "%d", v0x6350b9b75120_0 {0 0 0};
+    %store/vec4 v0x6350b9b75080_0, 0, 32;
+    %load/vec4 v0x6350b9b75120_0;
+    %pad/s 5;
+    %store/vec4 v0x6350b9b74b00_0, 0, 5;
+    %vpi_call 2 46 "$display", "[3] Tang Writeback co lenh Ghi (RegWriteW)? [Cho 1 hoac 0]: " {0 0 0};
+    %vpi_func 2 47 "$fscanf" 32, v0x6350b9b74fe0_0, "%d", v0x6350b9b75630_0 {0 0 0};
+    %store/vec4 v0x6350b9b75080_0, 0, 32;
+    %load/vec4 v0x6350b9b75630_0;
+    %pad/s 1;
+    %store/vec4 v0x6350b9b74d70_0, 0, 1;
+    %vpi_call 2 49 "$display", "[4] Tang Writeback nham thanh ghi nao (RD_W)? [Cho 0-31]: " {0 0 0};
+    %vpi_func 2 50 "$fscanf" 32, v0x6350b9b74fe0_0, "%d", v0x6350b9b75200_0 {0 0 0};
+    %store/vec4 v0x6350b9b75080_0, 0, 32;
+    %load/vec4 v0x6350b9b75200_0;
+    %pad/s 5;
+    %store/vec4 v0x6350b9b74c00_0, 0, 5;
+    %vpi_call 2 52 "$display", "[5] Lenh hien tai o tang Execute dang KHAU KHAC bien nao o nhanh A (Rs1)? [Cho 0-31]: " {0 0 0};
+    %vpi_func 2 53 "$fscanf" 32, v0x6350b9b74fe0_0, "%d", v0x6350b9b752e0_0 {0 0 0};
+    %store/vec4 v0x6350b9b75080_0, 0, 32;
+    %load/vec4 v0x6350b9b752e0_0;
+    %pad/s 5;
+    %store/vec4 v0x6350b9b74e40_0, 0, 5;
+    %vpi_call 2 55 "$display", "[6] Lenh hien tai o tang Execute dang KHAU KHAC bien nao o nhanh B (Rs2)? [Cho 0-31]: " {0 0 0};
+    %vpi_func 2 56 "$fscanf" 32, v0x6350b9b74fe0_0, "%d", v0x6350b9b753c0_0 {0 0 0};
+    %store/vec4 v0x6350b9b75080_0, 0, 32;
+    %load/vec4 v0x6350b9b753c0_0;
+    %pad/s 5;
+    %store/vec4 v0x6350b9b74f10_0, 0, 5;
+    %delay 10000, 0;
+    %vpi_call 2 62 "$display", "\012=> \304\220\303\201P \303\201N: M\341\272\240CH PH\341\272\242N \341\273\250NG M\341\273\236 C\341\273\224NG V\306\257\341\273\242T TR\306\257\341\273\232C (FORWARD):" {0 0 0};
+    %vpi_call 2 63 "$display", "   - Duong A (ForwardAE) = %b", v0x6350b9b74980_0 {0 0 0};
+    %vpi_call 2 64 "$display", "   - Duong B (ForwardBE) = %b", v0x6350b9b74a60_0 {0 0 0};
+    %vpi_call 2 65 "$display", "     (Giai ma Mux: 00 = Tu Register, 10 = Tu tang Memory (EX/MEM), 01 = Tu tang Writeback (MEM/WB))" {0 0 0};
+    %vpi_call 2 66 "$display", "--------------------------------------------------" {0 0 0};
+    %jmp T_0.2;
+T_0.3 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "interactive_forward_unit_tb.v";
+    "Hazard_unit.v";

@@ -22,7 +22,7 @@ module decode_cycle(clk, rst, InstrD, PCD, PCPlus4D, RegWriteW, RDW, ResultW, Re
     input [31:0] InstrD, PCD, PCPlus4D, ResultW;
 
     output RegWriteE,ALUSrcE,MemWriteE,ResultSrcE,BranchE;
-    output [2:0] ALUControlE;
+    output [3:0] ALUControlE;
     output [31:0] RD1_E, RD2_E, Imm_Ext_E;
     output [4:0] RS1_E, RS2_E, RD_E;
     output [31:0] PCE, PCPlus4E;
@@ -30,12 +30,12 @@ module decode_cycle(clk, rst, InstrD, PCD, PCPlus4D, RegWriteW, RDW, ResultW, Re
     // Declare Interim Wires
     wire RegWriteD,ALUSrcD,MemWriteD,ResultSrcD,BranchD;
     wire [1:0] ImmSrcD;
-    wire [2:0] ALUControlD;
+    wire [3:0] ALUControlD;
     wire [31:0] RD1_D, RD2_D, Imm_Ext_D;
 
     // Declaration of Interim Register
     reg RegWriteD_r,ALUSrcD_r,MemWriteD_r,ResultSrcD_r,BranchD_r;
-    reg [2:0] ALUControlD_r;
+    reg [3:0] ALUControlD_r;
     reg [31:0] RD1_D_r, RD2_D_r, Imm_Ext_D_r;
     reg [4:0] RD_D_r, RS1_D_r, RS2_D_r;
     reg [31:0] PCD_r, PCPlus4D_r;
@@ -84,7 +84,7 @@ module decode_cycle(clk, rst, InstrD, PCD, PCPlus4D, RegWriteW, RDW, ResultW, Re
             MemWriteD_r <= 1'b0;
             ResultSrcD_r <= 1'b0;
             BranchD_r <= 1'b0;
-            ALUControlD_r <= 3'b000;
+            ALUControlD_r <= 4'b0000;
             RD1_D_r <= 32'h00000000; 
             RD2_D_r <= 32'h00000000; 
             Imm_Ext_D_r <= 32'h00000000;

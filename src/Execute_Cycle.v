@@ -17,7 +17,7 @@ module execute_cycle(clk, rst, RegWriteE, ALUSrcE, MemWriteE, ResultSrcE, Branch
 
     // Declaration I/Os
     input clk, rst, RegWriteE,ALUSrcE,MemWriteE,ResultSrcE,BranchE;
-    input [2:0] ALUControlE;
+    input [3:0] ALUControlE;
     input [31:0] RD1_E, RD2_E, Imm_Ext_E;
     input [4:0] RD_E;
     input [31:0] PCE, PCPlus4E;

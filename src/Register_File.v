@@ -21,7 +21,8 @@ module Register_File(clk,rst,WE3,WD3,A1,A2,A3,RD1,RD2);
 
     reg [31:0] Register [31:0];
 
-    always @ (posedge clk)
+    integer i;
+    always @ (negedge clk)
     begin
         if(WE3 & (A3 != 5'h00))
             Register[A3] <= WD3;
@@ -31,7 +32,8 @@ module Register_File(clk,rst,WE3,WD3,A1,A2,A3,RD1,RD2);
     assign RD2 = (rst==1'b0) ? 32'd0 : Register[A2];
 
     initial begin
-        Register[0] = 32'h00000000;
+        for (i = 0; i < 32; i = i + 1)
+            Register[i] = 32'h00000000;
     end
 
 endmodule

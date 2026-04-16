@@ -30,7 +30,7 @@ module Main_Decoder(Op,RegWrite,ImmSrc,ALUSrc,MemWrite,ResultSrc,Branch,ALUOp);
                                             1'b0 ;
     assign Branch = (Op == 7'b1100011) ? 1'b1 :
                                          1'b0 ;
-    assign ALUOp = (Op == 7'b0110011) ? 2'b10 :
+    assign ALUOp = (Op == 7'b0110011 | Op == 7'b0010011) ? 2'b10 :
                    (Op == 7'b1100011) ? 2'b01 :
                                         2'b00 ;
 

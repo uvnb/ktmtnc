@@ -15,7 +15,7 @@
 module ALU(A,B,Result,ALUControl,OverFlow,Carry,Zero,Negative);
 
     input [31:0]A,B;
-    input [2:0]ALUControl;
+    input [3:0]ALUControl;
     output Carry,OverFlow,Zero,Negative;
     output [31:0]Result;
 
@@ -24,11 +24,18 @@ module ALU(A,B,Result,ALUControl,OverFlow,Carry,Zero,Negative);
 
     assign Sum = (ALUControl[0] == 1'b0) ? A + B :
                                           (A + ((~B)+1)) ;
-    assign {Cout,Result} = (ALUControl == 3'b000) ? Sum :
-                           (ALUControl == 3'b001) ? Sum :
-                           (ALUControl == 3'b010) ? A & B :
-                           (ALUControl == 3'b011) ? A | B :
-                           (ALUControl == 3'b101) ? {{32{1'b0}},(Sum[31])} :
+    assign {Cout,Result} = (ALUControl == 4'b0000) ? Sum :
+                           (ALUControl == 4'b0001) ? Sum :
+                           (ALUControl == 4'b0010) ? A & B :
+                           (ALUControl == 4'b0011) ? A | B :
+                           (ALUControl == 4'b0100) ? A ^ B :
+                           (ALUControl == 4'b0101) ? {{32{1'b0}},(Sum[31])} :
+                           (ALUControl == 4'b0110) ? {1'b0, (A * B)} :
+                           (ALUControl == 4'b0111) ? {1'b0, (A / B)} :
+                           (ALUControl == 4'b1000) ? {1'b0, (A << B[4:0])} :
+                           (ALUControl == 4'b1001) ? {1'b0, (A >> B[4:0])} :
+                           (ALUControl == 4'b1010) ? {1'b0, ($signed(A) >>> B[4:0])} :
+                           (ALUControl == 4'b1011) ? {{32{1'b0}}, (A < B)} :
                            {33{1'b0}};
     assign OverFlow = ((Sum[31] ^ A[31]) & 
                       (~(ALUControl[0] ^ B[31] ^ A[31])) &
